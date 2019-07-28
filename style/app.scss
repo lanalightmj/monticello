@@ -1,0 +1,400 @@
+@import "slick.scss";
+@import "slick-theme.scss";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+// variables
+$mainColor: #2c4058;
+$mainBackground: #fff;
+
+$container: 1170px;
+$colGups: 15px;
+
+
+$textFont-size: 1rem;  // 16px
+$linkColor: blue;
+
+$breakpoints: (
+        xs: 0,
+        sm: 575px,
+        md: 768px,
+        lg: 1025px,
+        xl: 1200px,
+        xxl: 1440px
+);
+
+
+
+  //===========  mixins start ===========//
+
+// columns
+$columns: 12;
+
+
+@each $breakpoint in $breakpoints {
+  $name: nth($breakpoint, 1);
+  $size: nth($breakpoint, 2);
+  @media only screen and (min-width: $size) {
+    [class*="col-#{$name}"] {
+      box-sizing: border-box;
+      flex: 0 0 auto;
+      padding-right: $colGups;
+      padding-left: $colGups;
+    }
+    @for $i from 1 through $columns {
+      .col-#{$name}-#{$i} {
+        flex-basis: 100% / $columns * $i;
+        max-width: 100% / $columns * $i;
+      }
+    }
+    @for $i from 1 through $columns {
+      .col-#{$name}-offset-#{$i} {
+        margin-left: 100% / $columns * $i
+      }
+    }
+  }
+}
+
+
+.container{
+  max-width: $container;
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+// layout
+
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -$colGups;
+  margin-left: -$colGups;
+}
+
+[class^='col']{
+  padding-left:$colGups;
+  padding-right:$colGups;
+  width: 100%;
+  min-height: 1px;
+}
+
+
+
+// main styles
+
+body{
+  font-family: sans-serif;
+  font-size: 1rem;
+}
+
+//buttons
+a, button{
+  transition: .3s ease-in;
+  transition-property: color, background-color, opacity;
+  svg{
+    fill:currentColor;
+  }
+}
+button, .button{
+  cursor: pointer;
+}
+
+.button{
+
+}
+
+.ba-header{
+  &__container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.menu{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+//========== header ==========//
+
+.ba-header{
+  display: flex;
+  position: absolute;
+  background-color: transparent;
+  width: 100%;
+  height: 160px;
+  margin-top: 0;
+  color: #fff;
+  z-index: 1;
+}
+
+.menu{
+  font-family: 'Gotham', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  &__item{
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+}
+
+
+.icon {
+  display: block;
+  width: 40px;
+  height: 40px;
+  fill: #fff;
+  &:hover{
+    fill: #666;
+  }
+}
+
+
+
+//========== ba-hero ==========//
+
+.ba-hero{
+  position: relative;
+  background: url(../img/hero-bg.png) 50% no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: auto;
+  top: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #fff;
+  padding-top: 364px;
+  &__title{
+  font-family: 'Gotham', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 80px;
+  letter-spacing: 0.05em;
+  margin-bottom: 30px;
+  text-align: center;
+  }
+  &__text{
+  font-family: 'Gotham', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.3em;
+  text-align: center;
+  }
+  &__arrow{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: 50px;
+    left: 50%;
+    margin-right: -12px;
+  }
+}
+
+
+
+
+//========== what-we-do ==========//
+
+.ba-what-we-do{
+  position: relative;
+  height: 1633px;
+  padding-top: 100px;
+  &__info{
+    /* width: 470px; */
+    /* height: 370; */
+  }
+  &__blackline{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+  }
+  &__block1{
+    height: 540px;
+    margin-bottom: 100px;
+  }
+  &__img{
+    float: left;
+    top: 340px;
+    width: 630px;
+    height: 470px;
+    margin-right:70px;
+  }
+  &__main-title{
+  font-family: 'Gotham', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 44px;
+  text-align: center;
+  margin-bottom: 100px;
+  }
+  &__subtitle{
+  font-family: 'Gotham', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  }
+  &__title{
+  font-family: 'Gotham', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 30px;
+  }
+  &__text{
+  font-family: 'OpenSans', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 30px;
+  }
+  &__address{
+    display: block;
+  }
+
+
+  &__block2{
+    height: 540px;
+  }
+  &__subtitle2{
+  font-family: 'Gotham', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  }
+  &__title2{
+  font-family: 'Gotham', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 30px;
+  }
+  &__text2{
+  font-family: 'OpenSans', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 30px;
+  }
+  &__btn{
+  background-color: transparent;
+  border: 1px solid #2c4058;
+  width: 190px;
+  height: 50px;
+  font-family: 'Gotham', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  &:hover{
+    background-color: #2c4058;
+    color: #fff;
+  }
+
+  &__img2{
+    float: right;
+    width: 630px;
+    height: 470px;
+  }
+}
+
+
+
+//========== latest-news ==========//
+
+.latest-news{
+  height: 1035px;
+  background: url(../img/Bg-latest.png) 50% no-repeat;
+  padding-top: 138px;
+  &__whiteline{
+    display: block;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &__title{
+  font-family: 'Myriad Pro', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 44px;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 100px;
+  }
+  &__slider{
+    display: flex;
+    justify-content: space-between;
+    width: 1170px;
+  }
+  &__slide{
+    width: 370px;
+    height: 514px;
+  }
+}
+
+
+
+//========== gallery ==========//
+
+.gallery{
+  position:relative;
+  height: 1000px;
+  padding-top: 140px;
+  &__blackline{
+    display: block;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &__title{
+  font-family: 'Gotham', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 44px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 100px;
+  }
+  &__item--2{
+
+  }
+  
+  
+  &__btn{
+    display: block;
+    width: 190px;
+    height: 50px;
+    border: 1px solid #2c4058;
+    background-color: transparent;
+    text-transform: uppercase;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
+
+//========== maps ==========//
+
+.maps{
+  height: 699px;
+  background-color: #ccc;
+}
+#map{
+  width: 100%;
+  height: 100%;
+}
+
+
+
+//========== ba-footer ==========//
+
+.ba-footer{
+  position: relative;
+  padding-top: 150px;
+  background: url(../img/footer-bg.png) 50% no-repeat;
+  height: 524px;
+  &__socials{
+    display: flex;
+    justify-content: space-between;
+    height: 144px;
+    display: flex;
+
+  }
+}
